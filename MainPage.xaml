@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
+             xmlns:local="clr-namespace:MauiAppKSMArt.ViewsModels"
+             x:Class="MauiAppKSMArt.MainPage">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel  />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="2">
+            <!--<Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a hovercraft number nine" />-->
+
+            <Label
+                Text="Art Marketplace" FontSize="Large" TextColor="LightGray"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level3" />
+
+            <!--<Label
+                Text="Welcome to &#10;.NET Multi-platform App UI"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />-->
+
+            <Grid  WidthRequest="300" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="prev"
+                        Grid.Column="0" Command="{Binding MainPagePrevButtonClick}" Grid.Row="1" Margin="5" />
+
+                <Button x:Name="CounterBtn" Grid.Column="1" Grid.Row="1" Margin="5" WidthRequest="60"
+                    Text="Load Data" SemanticProperties.Hint="Load Data"
+                    Command="{Binding MainPageGetButtonClick}"
+                    HorizontalOptions="Fill" />
+
+                <Button Text="next" Command="{Binding MainPageNextButtonClick}"
+                        Grid.Column="2" Grid.Row="1" Margin="5"/>
+            </Grid>
+
+            <Image x:Name="myImage" Source="{Binding MyImageSource}" MaximumHeightRequest="800" />
+
+            <!--<ListView x:Name="ArtObjectList" ItemsSource="{Binding MyArtObjects}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding UserName}"
+                      Detail="{Binding Location}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+            <Grid WidthRequest="600" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="{Binding SelectedArtObject.UserName}" Grid.Column="0" TextColor="Gray" />
+                <Label Text="{Binding SelectedArtObject.Title}" Grid.Column="1" TextColor="Gray"/>
+                <Label Text="{Binding SelectedArtObject.Price}" Grid.Column="2" TextColor="Gray"/>
+            </Grid>
+
+
+        </VerticalStackLayout>
+        
+        
+    </ScrollView>
+
+</ContentPage>
