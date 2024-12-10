@@ -10,7 +10,7 @@
     {
         int count = 0;
         ArtObjectRestService srv = new ArtObjectRestService();
-        AzureFileService azureFileService = new AzureFileService();
+        //AzureFileService azureFileService = new AzureFileService();
 
         public MainPage()
         {
