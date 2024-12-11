@@ -24,8 +24,9 @@ namespace MauiAppKSMArt
             BlobClient blobClient = _blobContainerClient.GetBlobClient(Path.GetFileName(filePath));
 
             using FileStream uploadFileStream = File.OpenRead(filePath);
-            await blobClient.UploadAsync(uploadFileStream, true);
-            uploadFileStream.Close();
+            var me = await blobClient.UploadAsync(uploadFileStream, true);
+            
+            uploadFileStream.Close();            
         }
 
      }    
