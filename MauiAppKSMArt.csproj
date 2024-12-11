@@ -78,6 +78,13 @@
 	  <MauiXaml Update="MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="UploadBlobToAzure.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Pages\" />
 	</ItemGroup>
 
 </Project>

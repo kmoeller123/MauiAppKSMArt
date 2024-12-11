@@ -42,7 +42,9 @@ namespace MauiAppKSMArt.ViewsModels
 
         internal void MpPrevClick()
         {
-            if (_selectedItem == 0) _selectedItem = 0;
+            if (_artObjects == null || _artObjects.Count == 0) return;
+
+            if (_selectedItem <= 0) _selectedItem = 0;
             else
             {
                 _selectedItem = _selectedItem - 1;
@@ -50,11 +52,13 @@ namespace MauiAppKSMArt.ViewsModels
 
             //MyImageSource = "";
             SelectedArtObject = _artObjects[_selectedItem];
-            MyImageSource = SelectedArtObject.Location;
+            MyImageSource = SelectedArtObject.Location;         
         }
 
         internal void MpNextClick()
         {
+            if (_artObjects == null || _artObjects.Count == 0) return;
+
             if (_selectedItem == _objectCount -1) _selectedItem = 0;
             else
             {
@@ -78,11 +82,6 @@ namespace MauiAppKSMArt.ViewsModels
                 MyImageSource = result[0].Location;
                 _selectedItem = 0;
             }
-
-
-            //var result = await azureFileService.DownloadImageFiles();
-            //var me = result;
-            //MyImageSource = ImageSource.FromStream(() => me[0]);
         }
 
         public ArtObject SelectedArtObject

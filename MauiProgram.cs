@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace MauiAppKSMArt
