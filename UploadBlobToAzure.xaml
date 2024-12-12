@@ -3,22 +3,72 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppKSMArt.UploadBlobToAzure"
              xmlns:local="clr-namespace:MauiAppKSMArt.ViewsModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Upload Blob To Azure">
 
     <ContentPage.BindingContext>
         <local:UploadBlobToAzureViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-        <Button x:Name="Btn_upload" Grid.Column="1" Grid.Row="1" Margin="5" WidthRequest="60"
-            Text="Load Data" SemanticProperties.Hint="Load Data"
-            Command="{Binding UploadImagesBlobButtonClick}"
-            HorizontalOptions="Fill" />
+    <VerticalStackLayout HorizontalOptions="Center">
+
+        <Label 
+             Text="Art Entries" TextColor="BlueViolet" FontSize="Header"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" />
+
+        <Grid IsEnabled="{Binding loadIsEnabled, Converter={StaticResource InvertedBoolConverter}} ">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Name" FontSize="Medium" Margin="20,-10,20,10" Grid.Row="0" Grid.Column="0"  
+                               TextColor="BlueViolet" />
+            <Entry WidthRequest="500"   Margin="20" Grid.Row="0" Grid.Column="1" 
+                            FontSize="Body" BackgroundColor="White" />
+
+            <Label Text="Title" FontSize="Medium" Margin="20,-10,20,10" Grid.Row="1" Grid.Column="0"
+                                 TextColor="BlueViolet"/>
+            <Entry Margin="20" BackgroundColor="White" Grid.Row="1" Grid.Column="1"
+                           WidthRequest="500" />
+            
+            <Label Text="Price" FontSize="Medium" Margin="20,-10,20,10" Grid.Row="2" Grid.Column="0"
+                     TextColor="BlueViolet"/>
+            <Entry  Margin="20" BackgroundColor="White" Grid.Row="2" Grid.Column="1"
+                           WidthRequest="500" />
+
+
+        </Grid>
+        <FlexLayout >
+
+            <Button x:Name="Btn_PickFiles" Grid.Column="1" Grid.Row="1" Margin="5" HeightRequest="25" WidthRequest="120"
+                Text="Pick Image" SemanticProperties.Hint="Pick Image"
+                Command="{Binding PickImagesBlobButtonClick}"
+                HorizontalOptions="Fill" IsEnabled="{Binding loadIsEnabled, Converter={StaticResource InvertedBoolConverter}} " />
+
+            <Button x:Name="Btn_upload" Grid.Column="1" Grid.Row="1" Margin="5" HeightRequest="25" WidthRequest="120"
+                 Text="Upload Images" SemanticProperties.Hint="Upload Images" IsEnabled="{Binding loadIsEnabled}"
+                  Command="{Binding UploadImagesBlobButtonClick}"
+                  HorizontalOptions="Fill" />    
+
+        </FlexLayout>
 
     </VerticalStackLayout>
 </ContentPage>

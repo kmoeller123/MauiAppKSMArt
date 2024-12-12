@@ -25,6 +25,7 @@ namespace MauiAppKSMArt.ViewsModels
 
         internal List<ArtObject> _artObjects = new List<ArtObject>();
         internal ArtObject _selectedArtObject = new ArtObject();
+        internal bool _isEnabled = false;
 
 
 
@@ -38,13 +39,14 @@ namespace MauiAppKSMArt.ViewsModels
             MainPageGetButtonClick = new Command(MpLoadClick);
             MainPagePrevButtonClick = new Command(MpPrevClick);
             MainPageNextButtonClick = new Command(MpNextClick);
+
         }
 
         internal void MpPrevClick()
         {
             if (_artObjects == null || _artObjects.Count == 0) return;
 
-            if (_selectedItem <= 0) _selectedItem = 0;
+            if (_selectedItem <= 0) _selectedItem = _artObjects.Count -1;
             else
             {
                 _selectedItem = _selectedItem - 1;
@@ -79,8 +81,12 @@ namespace MauiAppKSMArt.ViewsModels
                 SelectedArtObject = result[0];
                 _objectCount = result.Count;
                 MyArtObjects = result;
+
                 MyImageSource = result[0].Location;
+
                 _selectedItem = 0;
+
+                isEnabled = true;
             }
         }
 
@@ -120,6 +126,19 @@ namespace MauiAppKSMArt.ViewsModels
                 OnPropertyChanged();
             }
         }
+
+        public bool isEnabled
+        {
+            get => _isEnabled;
+
+            set
+            {
+                _isEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         public void OnPropertyChanged([CallerMemberName] string name = "") =>
        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

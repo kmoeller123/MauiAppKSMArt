@@ -41,14 +41,14 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Text="prev"
-                        Grid.Column="0" Command="{Binding MainPagePrevButtonClick}" Grid.Row="1" Margin="5" />
+                        Grid.Column="0" Command="{Binding MainPagePrevButtonClick}" IsEnabled="{Binding isEnabled}"  Grid.Row="1" Margin="5" />
 
                 <Button x:Name="CounterBtn" Grid.Column="1" Grid.Row="1" Margin="5" WidthRequest="60"
                     Text="Load Data" SemanticProperties.Hint="Load Data"
                     Command="{Binding MainPageGetButtonClick}"
                     HorizontalOptions="Fill" />
 
-                <Button Text="next" Command="{Binding MainPageNextButtonClick}"
+                <Button Text="next" Command="{Binding MainPageNextButtonClick}" IsEnabled="{Binding isEnabled}"
                         Grid.Column="2" Grid.Row="1" Margin="5"/>
             </Grid>
 

@@ -29,5 +29,16 @@ namespace MauiAppKSMArt
             uploadFileStream.Close();            
         }
 
-     }    
+        internal void DeleteBlobsFromContainer(Uri blobUri, List<string> fileNames)
+        {
+            foreach (var fileName in fileNames)
+            {
+                var uri = new Uri(blobUri, fileName);
+                BlobClient blobClient = new BlobClient(uri);
+                //blobClient.Delete(DeleteSnapshotsOption.IncludeSnapshots);
+                blobClient.DeleteIfExists(DeleteSnapshotsOption.IncludeSnapshots);
+            }
+        }
+
+    }    
 }
