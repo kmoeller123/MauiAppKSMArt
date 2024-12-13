@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
+
 namespace MauiAppKSMArt.ViewsModels
 {
     public class UploadBlobToAzureViewModel : INotifyPropertyChanged
@@ -12,20 +13,30 @@ namespace MauiAppKSMArt.ViewsModels
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public ICommand PickImagesBlobButtonClick { get; private set; }
-        public ICommand UploadImagesBlobButtonClick { get; private set; }
+        public ICommand PickImagesBlobButtonClick { get; private set; }       
+
+        public ICommand ValidateAllFields { get; private set; }
+
 
         public UploadBlobToAzureViewModel()
         {
             PickImagesBlobButtonClick = new Command(MpPickClick);
-            UploadImagesBlobButtonClick = new Command(MpLoadClick);
-           
+            ValidateAllFields = new Command(ValidateFileds);
+
+            _artObject = new ArtObject();
+         
         }
 
-        private async void MpLoadClick(object obj)
+        private void ValidateFileds(object obj)
         {
-            AzureFilesService afs = new AzureFilesService();
-            await afs.UploadFileAsync("");
+            loadIsEnabled = false;
+
+            if (artObject == null) return;
+            if (string.IsNullOrEmpty(artObject.UserName)) return;
+            if (string.IsNullOrEmpty(artObject.Title)) return;
+            if (artObject.Price is null || artObject.Price <=9 ) return;
+
+            loadIsEnabled = true;          
         }
 
         private async void MpPickClick()
@@ -38,7 +49,10 @@ namespace MauiAppKSMArt.ViewsModels
             });
             if (images == null) return;
 
-            var filePath = images.FullPath.ToString();          
+            var filePath = images.FullPath.ToString();
+
+            AzureFilesService afs = new AzureFilesService();
+            await afs.UploadFileAsync(filePath);
         }
 
         public ArtObject artObject
@@ -65,5 +79,8 @@ namespace MauiAppKSMArt.ViewsModels
 
         public void OnPropertyChanged([CallerMemberName] string name = "") =>
      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        
+        
     }
 }

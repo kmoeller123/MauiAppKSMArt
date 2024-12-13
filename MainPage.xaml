@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              xmlns:local="clr-namespace:MauiAppKSMArt.ViewsModels"
+              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiAppKSMArt.MainPage">
     <ContentPage.BindingContext>
         <local:MainPageViewModel  />
     </ContentPage.BindingContext>
+    
 
     <ScrollView>
         <VerticalStackLayout
@@ -41,15 +43,39 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Text="prev"
-                        Grid.Column="0" Command="{Binding MainPagePrevButtonClick}" IsEnabled="{Binding isEnabled}"  Grid.Row="1" Margin="5" />
+                        Grid.Column="0" Command="{Binding MainPagePrevButtonClick}" IsEnabled="{Binding isEnabled}"  Grid.Row="1" Margin="5" >
+                    <Button.Behaviors>
+                        <toolkit:AnimationBehavior>
+                            <toolkit:AnimationBehavior.AnimationType>
+                                <toolkit:FadeAnimation Opacity="0.5" />
+                            </toolkit:AnimationBehavior.AnimationType>
+                        </toolkit:AnimationBehavior>
+                    </Button.Behaviors>
+                </Button>
 
                 <Button x:Name="CounterBtn" Grid.Column="1" Grid.Row="1" Margin="5" WidthRequest="60"
                     Text="Load Data" SemanticProperties.Hint="Load Data"
                     Command="{Binding MainPageGetButtonClick}"
-                    HorizontalOptions="Fill" />
+                    HorizontalOptions="Fill" >
+                    <Button.Behaviors>
+                        <toolkit:AnimationBehavior>
+                            <toolkit:AnimationBehavior.AnimationType>
+                                <toolkit:FadeAnimation Opacity="0.5" />
+                            </toolkit:AnimationBehavior.AnimationType>
+                        </toolkit:AnimationBehavior>
+                    </Button.Behaviors>
+                </Button>
 
                 <Button Text="next" Command="{Binding MainPageNextButtonClick}" IsEnabled="{Binding isEnabled}"
-                        Grid.Column="2" Grid.Row="1" Margin="5"/>
+                        Grid.Column="2" Grid.Row="1" Margin="5">
+                    <Button.Behaviors>
+                        <toolkit:AnimationBehavior>
+                            <toolkit:AnimationBehavior.AnimationType>
+                                <toolkit:FadeAnimation Opacity="0.5" />
+                            </toolkit:AnimationBehavior.AnimationType>
+                        </toolkit:AnimationBehavior>
+                    </Button.Behaviors>
+                </Button>
             </Grid>
 
             <Image x:Name="myImage" Source="{Binding MyImageSource}" MaximumHeightRequest="800" />
