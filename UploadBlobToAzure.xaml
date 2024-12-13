@@ -4,7 +4,7 @@
              x:Class="MauiAppKSMArt.UploadBlobToAzure"
              xmlns:local="clr-namespace:MauiAppKSMArt.ViewsModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             Title="Upload Blob To Azure">
+             Title="Upload To Azure" BackgroundColor="White">
 
     <ContentPage.BindingContext>
         <local:UploadBlobToAzureViewModel />
@@ -16,46 +16,46 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="AntiqueWhite" >
+    <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="White" >
 
         <Label 
-             Text="Art Entries" TextColor="BlueViolet" FontSize="Header"
+             Text="Art Entries" TextColor="LightBlue" FontSize="Header" FontAttributes="Bold"
              VerticalOptions="Center" 
              HorizontalOptions="Center" />
 
         
         <HorizontalStackLayout>
-            <Label  WidthRequest="80" Text="User" FontSize="Medium" Margin="0,0,5,0"   
-                            TextColor="BlueViolet" />
-            <Entry WidthRequest="400"   Margin="0,0,5,5" IsEnabled="{Binding loadIsEnabled, Converter={StaticResource InvertedBoolConverter}}"
-                        FontSize="Body"  BackgroundColor="Azure" Text="{Binding artObject.FileName, Mode=TwoWay}"  />
+            <Label  WidthRequest="80" Text="User" FontSize="Medium" Margin="5,0,5,0"   
+                            TextColor="Gray" />
+            <Entry WidthRequest="400"   Margin="0,0,10,5" IsEnabled="{Binding loadIsEnabled, Converter={StaticResource InvertedBoolConverter}}"
+                        FontSize="Body"  BackgroundColor="WhiteSmoke" Text="{Binding artObject.FileName, Mode=TwoWay}"  />
         </HorizontalStackLayout>
 
         <HorizontalStackLayout>
-            <Label WidthRequest="80" Text="Title" FontSize="Medium" Margin="0,0,5,0" 
-                                    TextColor="BlueViolet"/>
-            <Entry Margin="0,0,5,5" BackgroundColor="Azure" Text="{Binding artObject.Title, Mode=TwoWay}"
+            <Label WidthRequest="80" Text="Title" FontSize="Medium" Margin="5,0,5,0" 
+                                    TextColor="Gray"/>
+            <Entry Margin="0,0,10,5" BackgroundColor="WhiteSmoke" Text="{Binding artObject.Title, Mode=TwoWay}"
                    IsEnabled="{Binding loadIsEnabled, Converter={StaticResource InvertedBoolConverter}}"
                             WidthRequest="400" />
         </HorizontalStackLayout>
 
         <HorizontalStackLayout>
-            <Label WidthRequest="80" Text="Price" FontSize="Medium" Margin="0,0,5,0"
-                    TextColor="BlueViolet"/>
-            <Entry  Margin="0,0,5,5" BackgroundColor="Azure" Text="{Binding artObject.Price, Mode=TwoWay}"
+            <Label WidthRequest="80" Text="Price" FontSize="Medium" Margin="5,0,5,0"
+                    TextColor="Gray"/>
+            <Entry  Margin="0,0,10,5" BackgroundColor="WhiteSmoke" Text="{Binding artObject.Price, Mode=TwoWay}"
                     IsEnabled="{Binding loadIsEnabled, Converter={StaticResource InvertedBoolConverter}}"
                         WidthRequest="200" />
         </HorizontalStackLayout>
 
-        <FlexLayout Margin="5" >
+        <FlexLayout Margin="80,10,10,20" >
 
             <Button x:Name="Btn_PickFiles" Grid.Column="1" Grid.Row="1" Margin="5" HeightRequest="25" WidthRequest="120"
                 Text="Pick Image" SemanticProperties.Hint="Pick Image"
                 Command="{Binding PickImagesBlobButtonClick}"
-                HorizontalOptions="Fill" IsEnabled="{Binding loadIsEnabled, Converter={StaticResource InvertedBoolConverter}}" />
+                HorizontalOptions="Fill" IsEnabled="{Binding loadIsEnabled}" />
 
             <Button x:Name="Btn_upload" Grid.Column="1" Grid.Row="1" Margin="5" HeightRequest="25" WidthRequest="120"
-                 Text="Upload Images" SemanticProperties.Hint="Upload Images" IsEnabled="{Binding loadIsEnabled}"
+                 Text="Upload Image" SemanticProperties.Hint="Upload Image" IsEnabled="{Binding loadIsEnabled}"
                   Command="{Binding UploadImagesBlobButtonClick}"
                   HorizontalOptions="Fill" />    
 
