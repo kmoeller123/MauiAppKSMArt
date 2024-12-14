@@ -1,4 +1,6 @@
-﻿using KSMWebApi.Models;
+﻿using CommunityToolkit.Maui.Views;
+using KSMWebApi.Models;
+using MauiAppKSMArt.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -7,34 +9,55 @@ using System.Windows.Input;
 namespace MauiAppKSMArt.ViewsModels
 {
     public class UploadBlobToAzureViewModel : INotifyPropertyChanged
-    {
-        ArtObject _artObject;
+    {        
         bool _loadisEnabled = false;
+
+        string _userName;
+        string _title;
+        string _price;
+        
+
+        string _alertButton;
+        bool _alertButtonVisible = false;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public ICommand PickImagesBlobButtonClick { get; private set; }       
-
+        public ICommand PickImagesBlobButtonClick { get; private set; }  
         public ICommand ValidateAllFields { get; private set; }
-
+        public ICommand ResetForm { get; private set; }
 
         public UploadBlobToAzureViewModel()
         {
             PickImagesBlobButtonClick = new Command(MpPickClick);
             ValidateAllFields = new Command(ValidateFileds);
+            ResetForm = new Command(MpResetForm);
 
-            _artObject = new ArtObject();
-         
+            //artObject = new ArtObject();
+            MyUserName = string.Empty;
+            MyTitle = string.Empty;
+            MyPrice = string.Empty;
+
+            AlertButton = string.Empty;
+        }
+
+        private void MpResetForm(object obj)
+        {
+            AlertButtonVisible = false;
+            loadIsEnabled = false;
+
+            MyUserName = string.Empty;
+            MyTitle = string.Empty;
+            MyPrice = string.Empty;           
         }
 
         private void ValidateFileds(object obj)
         {
+            
             loadIsEnabled = false;
-
-            if (artObject == null) return;
-            if (string.IsNullOrEmpty(artObject.UserName)) return;
-            if (string.IsNullOrEmpty(artObject.Title)) return;
-            if (artObject.Price is null || artObject.Price <=9 ) return;
+           
+            if (string.IsNullOrEmpty(MyUserName)) return;
+            if (string.IsNullOrEmpty(MyTitle)) return;
+            if (string.IsNullOrEmpty(MyPrice)) return;
 
             loadIsEnabled = true;          
         }
@@ -45,26 +68,106 @@ namespace MauiAppKSMArt.ViewsModels
             {
                 PickerTitle = "Pick Image",
                 FileTypes = FilePickerFileType.Images
-               
+
             });
             if (images == null) return;
 
             var filePath = images.FullPath.ToString();
+            var fileName = Path.GetFileName(filePath);
+            var strings = fileName.Split(".");
 
-            AzureFilesService afs = new AzureFilesService();
-            await afs.UploadFileAsync(filePath);
+            decimal price = Convert.ToDecimal(MyPrice);
+
+            ArtObject artObject = new ArtObject()
+            {
+                UserName = MyUserName,
+                Title = MyTitle,
+                Price = price,
+                FileName = strings[0].Trim(),
+                FileType = strings[1].Trim(),
+                Location = @"https://ksmart123.blob.core.windows.net/ksmfiles123/" + fileName,
+                Id = 0,
+                LastViewed = null,
+                Views = null
+            };
+
+            loadIsEnabled = false;
+
+            //ArtObjectRestService aors = new ArtObjectRestService();
+            //await aors.CreateArtObjectAsync(artObject);
+
+            //AzureFilesService afs = new AzureFilesService();
+            //await afs.UploadFileAsync(filePath);
+
+            AlertButton = "Reset Form";
+            AlertButtonVisible = true;            
         }
 
-        public ArtObject artObject
+        public string? MyUserName
         {
-            get => _artObject;
+            get => _userName;
 
             set
             {
-                _artObject = value;
+                _userName = value;
                 OnPropertyChanged();
             }
         }
+
+        public string? MyTitle
+        {
+            get => _title;
+
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string? MyPrice
+        {
+            get => _price;
+
+            set
+            {
+                _price = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string AlertButton
+        {
+            get => _alertButton;
+
+            set
+            {
+                _alertButton = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool AlertButtonVisible
+        {
+            get => _alertButtonVisible;
+
+            set
+            {
+                _alertButtonVisible = value;
+                OnPropertyChanged();            
+            }
+        }
+
+        //public ArtObject artObject
+        //{
+        //    get => _artObject;
+
+        //    set
+        //    {
+        //        _artObject = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         public bool loadIsEnabled
         {
@@ -78,9 +181,7 @@ namespace MauiAppKSMArt.ViewsModels
         }
 
         public void OnPropertyChanged([CallerMemberName] string name = "") =>
-     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
-        
+     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));        
         
     }
 }

@@ -37,13 +37,14 @@
             <Label  WidthRequest="80" Text="Email" FontSize="Medium" Margin="5,0,5,0" TextColor="Gray" />
             
             <Entry WidthRequest="300"   Margin="0,0,10,5" IsSpellCheckEnabled="False"
-                        FontSize="Body"  BackgroundColor="WhiteSmoke" Text="{Binding artObject.UserName, Mode=TwoWay}"  >
+                        IsEnabled="{Binding AlertButtonVisible, Converter={StaticResource InvertedBoolConverter}}"
+                        FontSize="Body"  BackgroundColor="WhiteSmoke" Text="{Binding MyUserName, Mode=TwoWay}"  >
                 <Entry.Behaviors>
                     <toolkit:EmailValidationBehavior 
                              InvalidStyle="{StaticResource InvalidEntryStyle}"
                              ValidStyle="{StaticResource ValidEntryStyle}"
                              Flags="ValidateOnValueChanged" />
-                    <toolkit:EventToCommandBehavior EventName="PropertyChanged" Command="{Binding ValidateAllFields}" />
+                    <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateAllFields}"/>
                 </Entry.Behaviors>
             </Entry>
         </HorizontalStackLayout>
@@ -51,9 +52,10 @@
         <HorizontalStackLayout>
             <Label WidthRequest="80" Text="Title" FontSize="Medium" Margin="5,0,5,0" TextColor="Gray"/>
 
-            <Entry Margin="0,0,10,5" BackgroundColor="WhiteSmoke" Text="{Binding artObject.Title, Mode=TwoWay}" WidthRequest="300" >
+            <Entry Margin="0,0,10,5" WidthRequest="300"  BackgroundColor="WhiteSmoke" Text="{Binding MyTitle, Mode=TwoWay}" 
+                   IsEnabled="{Binding AlertButtonVisible, Converter={StaticResource InvertedBoolConverter}}" >
                 <Entry.Behaviors>
-                    <toolkit:EventToCommandBehavior EventName="PropertyChanged" Command="{Binding ValidateAllFields}" />
+                    <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateAllFields}" />
                 </Entry.Behaviors>
             </Entry>
         </HorizontalStackLayout>
@@ -61,7 +63,8 @@
         <HorizontalStackLayout>
             <Label WidthRequest="80" Text="Price" FontSize="Medium" Margin="5,0,5,0" TextColor="Gray"/>
 
-            <Entry  Margin="0,0,10,5" BackgroundColor="WhiteSmoke" Text="{Binding artObject.Price, Mode=TwoWay}" WidthRequest="200" >
+            <Entry  Margin="0,0,10,5" BackgroundColor="WhiteSmoke" Text="{Binding MyPrice, Mode=TwoWay}" WidthRequest="200"
+                    IsEnabled="{Binding AlertButtonVisible, Converter={StaticResource InvertedBoolConverter}}">
                 <Entry.Behaviors>
                     <toolkit:NumericValidationBehavior 
                         InvalidStyle="{StaticResource InvalidEntryStyle}"
@@ -70,8 +73,7 @@
                         MinimumValue="0.00"
                         MaximumValue="9000000.00"
                         MaximumDecimalPlaces="2" />
-                    <toolkit:EventToCommandBehavior
-                        EventName="PropertyChanged" Command="{Binding ValidateAllFields}" />
+                    <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateAllFields}" />
                 </Entry.Behaviors>
             </Entry>
         </HorizontalStackLayout>
@@ -82,9 +84,11 @@
                 Text="Pick Image" SemanticProperties.Hint="Pick Image"
                 Command="{Binding PickImagesBlobButtonClick}"
                 HorizontalOptions="Fill" IsEnabled="{Binding loadIsEnabled}" >                
-            </Button>
-            
-        </FlexLayout>       
+            </Button>    
+        </FlexLayout>
+        <Button x:Name="Message" MinimumHeightRequest="25" MinimumWidthRequest="200"
+                BackgroundColor="LightBlue" Text="{Binding AlertButton}" IsVisible="{Binding AlertButtonVisible}" TextColor="Black"
+                Command="{Binding ResetForm}" />
 
     </VerticalStackLayout>
 </ContentPage>
