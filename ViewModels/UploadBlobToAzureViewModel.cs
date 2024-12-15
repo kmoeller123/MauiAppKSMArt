@@ -93,13 +93,15 @@ namespace MauiAppKSMArt.ViewsModels
 
             loadIsEnabled = false;
 
+            AlertButton = "Successfully Uploaded,press to reset Form";
+
             //ArtObjectRestService aors = new ArtObjectRestService();
             //await aors.CreateArtObjectAsync(artObject);
 
             //AzureFilesService afs = new AzureFilesService();
             //await afs.UploadFileAsync(filePath);
 
-            AlertButton = "Reset Form";
+            AlertButton = "Successfully Completed, press to reset Form";
             AlertButtonVisible = true;            
         }
 
