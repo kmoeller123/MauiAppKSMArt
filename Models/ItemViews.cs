@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KSMWebApi.Models;
+namespace MauiAppKSMArt.Models;
 
 public partial class ItemViews
 {

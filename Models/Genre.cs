@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KSMArtWebApi.Models
+namespace MauiAppKSMArt.Models
 {
     public partial class Genre
     {

@@ -4,7 +4,7 @@
     using Microsoft.Maui.Controls.Xaml;
     using Microsoft.Maui.Hosting;
     using CommunityToolkit.Maui;
-    using KSMWebApi.Models;
+    using MauiAppKSMArt.Models;
 
     public partial class MainPage : ContentPage
     {

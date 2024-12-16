@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using MauiAppKSMArt.Services;
-using KSMWebApi.Models;
+using MauiAppKSMArt.Models;
 using CommunityToolkit.Maui;
 
 namespace MauiAppKSMArt.ViewsModels

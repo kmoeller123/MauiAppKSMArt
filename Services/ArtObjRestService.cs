@@ -1,4 +1,4 @@
-﻿using KSMWebApi.Models;
+﻿using MauiAppKSMArt.Models;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ namespace MauiAppKSMArt.Services
     {
         HttpClient _client;
         JsonSerializerOptions _serializerOptions;
+
         //string _urlAll = @"https://localhost:7196/ArtObjects/All";
         //string _urlGet = @"https://localhost:7196/ArtObjects/details";
         //string _urlCreate = @"https://localhost:7196/ArtObjects/Create";

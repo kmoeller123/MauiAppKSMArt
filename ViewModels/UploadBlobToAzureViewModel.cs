@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Maui.Views;
-using KSMWebApi.Models;
+using MauiAppKSMArt.Models;
 using MauiAppKSMArt.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
