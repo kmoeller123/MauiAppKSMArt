@@ -20,9 +20,12 @@
                 SemanticProperties.Description="dot net bot in a hovercraft number nine" />-->
 
             <Label
-                Text="Art Marketplace" FontSize="Large" TextColor="LightSkyBlue"
+                Text="Art Marketplace" FontSize="Large" TextColor="Black"
                 Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level3" >   
+                SemanticProperties.HeadingLevel="Level3" >
+                <Label.Shadow>
+                    <Shadow Brush="Gray" Offset="20,20" Radius="180"/> 
+                </Label.Shadow>
             </Label>
 
             <!--<Label
