@@ -3,15 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              xmlns:local="clr-namespace:MauiAppKSMArt.ViewsModels"
               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="MauiAppKSMArt.MainPage">
+             x:Class="MauiAppKSMArt.MainPage" Background="WhiteSmoke" >
     <ContentPage.BindingContext>
         <local:MainPageViewModel  />
     </ContentPage.BindingContext>
     
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
+        <VerticalStackLayout Background="WhiteSmoke"
+            Padding="0"
             Spacing="2">
             <!--<Image
                 Source="dotnet_bot.png"
@@ -20,9 +20,13 @@
                 SemanticProperties.Description="dot net bot in a hovercraft number nine" />-->
 
             <Label
-                Text="Art Marketplace" FontSize="Large" TextColor="LightGray"
+                Text="Art Marketplace" FontSize="Large" TextColor="LightSkyBlue"
                 Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level3" />
+                SemanticProperties.HeadingLevel="Level3" >
+                <Label.Shadow>
+                    <Shadow Brush="LightBlue" Offset="20,20" Radius="40" Opacity="0.9"/>
+                </Label.Shadow>
+            </Label>
 
             <!--<Label
                 Text="Welcome to &#10;.NET Multi-platform App UI"
@@ -43,42 +47,47 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Text="prev"
-                        Grid.Column="0" Command="{Binding MainPagePrevButtonClick}" IsEnabled="{Binding isEnabled}"  Grid.Row="1" Margin="5" >
+                        Grid.Column="0" HeightRequest="20" Command="{Binding MainPagePrevButtonClick}" IsEnabled="{Binding isEnabled}" TextColor="Blue" BackgroundColor="White" Opacity=".8"
+                        Grid.Row="1" Margin="5" >
+                    <Button.Shadow>
+                        <Shadow Brush="Gray" Offset="20,20" Radius="20"/>
+                    </Button.Shadow>                  
                 </Button>
 
-                <Button x:Name="CounterBtn" Grid.Column="1" Grid.Row="1" Margin="5" WidthRequest="60"
-                    Text="Load Data" SemanticProperties.Hint="Load Data"
+                <Button x:Name="CounterBtn" Grid.Column="1" Grid.Row="1" Margin="5" WidthRequest="60" TextColor="Blue" BackgroundColor="White" Opacity=".8"
+                    Text="load" SemanticProperties.Hint="Load Data"
                     Command="{Binding MainPageGetButtonClick}"
                     HorizontalOptions="Fill" >
-                 </Button>
+                    <Button.Shadow>
+                        <Shadow Brush="Gray" Offset="20,20" Radius="20"/>
+                    </Button.Shadow>
+                </Button>
 
-                <Button Text="next" Command="{Binding MainPageNextButtonClick}" IsEnabled="{Binding isEnabled}"
-                        Grid.Column="2" Grid.Row="1" Margin="5">                  
+                <Button Text="next" Command="{Binding MainPageNextButtonClick}" IsEnabled="{Binding isEnabled}" TextColor="Blue" BackgroundColor="White" Opacity=".8"
+                        Grid.Column="2" Grid.Row="1" Margin="5">
+                    <Button.Shadow>
+                        <Shadow Brush="Gray" Offset="20,20" Radius="20"/>
+                    </Button.Shadow>
                 </Button>
                 
             </Grid>
 
-            <Image x:Name="myImage" Source="{Binding MyImageSource}" MaximumHeightRequest="800" />
+            <Image x:Name="myImage" Source="{Binding MyImageSource}" MaximumHeightRequest="800" >
+                <Image.Shadow>
+                    <Shadow Brush="Black" Offset="20,20" Radius="80"/>
+                </Image.Shadow>
+            </Image>
 
-            <!--<ListView x:Name="ArtObjectList" ItemsSource="{Binding MyArtObjects}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding UserName}"
-                      Detail="{Binding Location}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-            <Grid WidthRequest="600" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                
-                <Label Text="{Binding SelectedArtObject.UserName}" Grid.Column="0" TextColor="Gray" />
-                <Label Text="{Binding SelectedArtObject.Title}" Grid.Column="1" TextColor="Gray"/>
-                <Label Text="{Binding SelectedArtObject.Price}" Grid.Column="2" TextColor="Gray"/>
-            </Grid>
+            <FlexLayout HorizontalOptions="Center" BackgroundColor="LightSkyBlue" Margin="0" Opacity=".3" >
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="{Binding SelectedArtObject.UserName}" TextColor="White" FontSize="Medium"  Margin="5,0,5,0" />
+                    <Label Text="{Binding SelectedArtObject.Title}"    TextColor="White" FontSize="Medium" Margin="35,0,35,0" />
+                    <Label Text="{Binding SelectedArtObject.Price}"    TextColor="White" FontSize="Medium" Margin="5,0,5,0" />
+                </HorizontalStackLayout>    
+                <FlexLayout.Shadow>
+                    <Shadow Brush="LightBlue" Offset="20,20" Radius="40" Opacity="0.2"/>
+                </FlexLayout.Shadow>
+            </FlexLayout>
 
 
         </VerticalStackLayout>

@@ -4,7 +4,7 @@
              x:Class="MauiAppKSMArt.UploadBlobToAzure"
              xmlns:local="clr-namespace:MauiAppKSMArt.ViewsModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             Title="Upload To Azure" BackgroundColor="White">
+             Title="Upload To Azure" BackgroundColor="WhiteSmoke">
 
     <ContentPage.BindingContext>
         <local:UploadBlobToAzureViewModel />
@@ -26,7 +26,7 @@
         
     </ContentPage.Resources>
 
-    <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="White" >
+    <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="WhiteSmoke" >
 
         <Label 
              Text="Art Entries" TextColor="LightBlue" FontSize="Header" FontAttributes="Bold"
@@ -34,11 +34,11 @@
              HorizontalOptions="Center" />
                 
         <HorizontalStackLayout>
-            <Label  WidthRequest="80" Text="Email" FontSize="Medium" Margin="5,0,5,0" TextColor="Gray" />
+            <Label  WidthRequest="80" Text="Email" FontSize="Medium" Margin="5,0,5,0" TextColor="Blue" Opacity=".7" />
             
             <Entry WidthRequest="300"   Margin="0,0,10,5" IsSpellCheckEnabled="False"
                         IsEnabled="{Binding AlertButtonVisible, Converter={StaticResource InvertedBoolConverter}}"
-                        FontSize="Body"  BackgroundColor="WhiteSmoke" Text="{Binding MyUserName, Mode=TwoWay}"  >
+                        FontSize="Body"  BackgroundColor="White" Text="{Binding MyUserName, Mode=TwoWay}"  >
                 <Entry.Behaviors>
                     <toolkit:EmailValidationBehavior 
                              InvalidStyle="{StaticResource InvalidEntryStyle}"
@@ -50,9 +50,9 @@
         </HorizontalStackLayout>
 
         <HorizontalStackLayout>
-            <Label WidthRequest="80" Text="Title" FontSize="Medium" Margin="5,0,5,0" TextColor="Gray"/>
+            <Label WidthRequest="80" Text="Title" FontSize="Medium" Margin="5,0,5,0" TextColor="Blue" Opacity=".7" />
 
-            <Entry Margin="0,0,10,5" WidthRequest="300"  BackgroundColor="WhiteSmoke" Text="{Binding MyTitle, Mode=TwoWay}" 
+            <Entry Margin="0,0,10,5" WidthRequest="300"  BackgroundColor="White" Text="{Binding MyTitle, Mode=TwoWay}" 
                    IsEnabled="{Binding AlertButtonVisible, Converter={StaticResource InvertedBoolConverter}}" >
                 <Entry.Behaviors>
                     <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateAllFields}" />
@@ -61,9 +61,9 @@
         </HorizontalStackLayout>
 
         <HorizontalStackLayout>
-            <Label WidthRequest="80" Text="Price" FontSize="Medium" Margin="5,0,5,0" TextColor="Gray"/>
+            <Label WidthRequest="80" Text="Price" FontSize="Medium" Margin="5,0,5,0" TextColor="Blue" Opacity=".7"/>
 
-            <Entry  Margin="0,0,10,5" BackgroundColor="WhiteSmoke" Text="{Binding MyPrice, Mode=TwoWay}" WidthRequest="200"
+            <Entry  Margin="0,0,10,5" BackgroundColor="White" Text="{Binding MyPrice, Mode=TwoWay}" WidthRequest="200"
                     IsEnabled="{Binding AlertButtonVisible, Converter={StaticResource InvertedBoolConverter}}">
                 <Entry.Behaviors>
                     <toolkit:NumericValidationBehavior 
@@ -80,14 +80,14 @@
 
         <FlexLayout Margin="80,10,10,20" >
 
-            <Button x:Name="Btn_PickFiles" Grid.Column="1" Grid.Row="1" Margin="5" HeightRequest="25" WidthRequest="120"
+            <Button x:Name="Btn_PickFiles" Grid.Column="1" Grid.Row="1" Margin="5" HeightRequest="25" WidthRequest="120" TextColor="DarkBlue" BackgroundColor="LightSkyBlue" Opacity=".7"
                 Text="Pick Image" SemanticProperties.Hint="Pick Image"
                 Command="{Binding PickImagesBlobButtonClick}"
                 HorizontalOptions="Fill" IsEnabled="{Binding loadIsEnabled}" >                
             </Button>    
         </FlexLayout>
         <Button x:Name="Message" MinimumHeightRequest="25" MinimumWidthRequest="200"
-                BackgroundColor="LightBlue" Text="{Binding AlertButton}" IsVisible="{Binding AlertButtonVisible}" TextColor="Black"
+                Text="{Binding AlertButton}" IsVisible="{Binding AlertButtonVisible}" TextColor="DarkBlue" BackgroundColor="LightSkyBlue" Opacity=".5"
                 Command="{Binding ResetForm}" />
 
     </VerticalStackLayout>
