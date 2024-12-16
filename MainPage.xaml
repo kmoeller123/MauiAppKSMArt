@@ -22,10 +22,7 @@
             <Label
                 Text="Art Marketplace" FontSize="Large" TextColor="LightSkyBlue"
                 Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level3" >
-                <Label.Shadow>
-                    <Shadow Brush="LightBlue" Offset="20,20" Radius="40" Opacity="0.9"/>
-                </Label.Shadow>
+                SemanticProperties.HeadingLevel="Level3" >   
             </Label>
 
             <!--<Label
@@ -47,46 +44,37 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Text="prev"
-                        Grid.Column="0" HeightRequest="20" Command="{Binding MainPagePrevButtonClick}" IsEnabled="{Binding isEnabled}" TextColor="Blue" BackgroundColor="White" Opacity=".8"
+                        Grid.Column="0" HeightRequest="20" Command="{Binding MainPagePrevButtonClick}" IsEnabled="{Binding isEnabled}" TextColor="Blue" BackgroundColor="White" Opacity=".5"
                         Grid.Row="1" Margin="5" >
-                    <Button.Shadow>
+                    <!--<Button.Shadow>
                         <Shadow Brush="Gray" Offset="20,20" Radius="20"/>
-                    </Button.Shadow>                  
+                    </Button.Shadow>-->                  
                 </Button>
 
-                <Button x:Name="CounterBtn" Grid.Column="1" Grid.Row="1" Margin="5" WidthRequest="60" TextColor="Blue" BackgroundColor="White" Opacity=".8"
+                <Button x:Name="CounterBtn" Grid.Column="1" Grid.Row="1" Margin="5" WidthRequest="60" TextColor="Blue" BackgroundColor="White" Opacity=".5"
                     Text="load" SemanticProperties.Hint="Load Data"
                     Command="{Binding MainPageGetButtonClick}"
-                    HorizontalOptions="Fill" >
-                    <Button.Shadow>
-                        <Shadow Brush="Gray" Offset="20,20" Radius="20"/>
-                    </Button.Shadow>
+                    HorizontalOptions="Fill" >                   
                 </Button>
 
-                <Button Text="next" Command="{Binding MainPageNextButtonClick}" IsEnabled="{Binding isEnabled}" TextColor="Blue" BackgroundColor="White" Opacity=".8"
-                        Grid.Column="2" Grid.Row="1" Margin="5">
-                    <Button.Shadow>
-                        <Shadow Brush="Gray" Offset="20,20" Radius="20"/>
-                    </Button.Shadow>
+                <Button Text="next" Command="{Binding MainPageNextButtonClick}" IsEnabled="{Binding isEnabled}" TextColor="Blue" BackgroundColor="White" Opacity=".5"
+                        Grid.Column="2" Grid.Row="1" Margin="5">                 
                 </Button>
                 
             </Grid>
 
-            <Image x:Name="myImage" Source="{Binding MyImageSource}" MaximumHeightRequest="800" >
+            <Image x:Name="myImage" Source="{Binding MyImageSource}" MaximumHeightRequest="800" Margin="3" >
                 <Image.Shadow>
-                    <Shadow Brush="Black" Offset="20,20" Radius="80"/>
+                    <Shadow Brush="Gray" Offset="20,20" Radius="60"/>
                 </Image.Shadow>
             </Image>
 
-            <FlexLayout HorizontalOptions="Center" BackgroundColor="LightSkyBlue" Margin="0" Opacity=".3" >
+            <FlexLayout HorizontalOptions="Center" BackgroundColor="Transparent" Margin="0" Opacity=".8" >
                 <HorizontalStackLayout HorizontalOptions="Center">
-                    <Label Text="{Binding SelectedArtObject.UserName}" TextColor="White" FontSize="Medium"  Margin="5,0,5,0" />
-                    <Label Text="{Binding SelectedArtObject.Title}"    TextColor="White" FontSize="Medium" Margin="35,0,35,0" />
-                    <Label Text="{Binding SelectedArtObject.Price}"    TextColor="White" FontSize="Medium" Margin="5,0,5,0" />
-                </HorizontalStackLayout>    
-                <FlexLayout.Shadow>
-                    <Shadow Brush="LightBlue" Offset="20,20" Radius="40" Opacity="0.2"/>
-                </FlexLayout.Shadow>
+                    <Label Text="{Binding SelectedArtObject.UserName}" TextColor="Black" FontSize="Small"  Margin="5,0,0,0" />
+                    <Label Text="{Binding SelectedArtObject.Title}"    TextColor="Black" FontSize="Small" Margin="4,0,0,0" />
+                    <Label Text="{Binding SelectedArtObject.Price, StringFormat= '${0:F2}'}"    TextColor="Black" FontSize="Small" Margin="4,0,5,0" />
+                </HorizontalStackLayout>   
             </FlexLayout>
 
 
