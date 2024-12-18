@@ -55,7 +55,7 @@
             <Entry Margin="0,0,10,5" WidthRequest="300"  BackgroundColor="White" Text="{Binding MyTitle, Mode=TwoWay}" 
                    IsEnabled="{Binding AlertButtonVisible, Converter={StaticResource InvertedBoolConverter}}" >
                 <Entry.Behaviors>
-                    <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateAllFields}" />
+                    <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateAllFields}" CommandParameter="{Binding}" />
                 </Entry.Behaviors>
             </Entry>
         </HorizontalStackLayout>

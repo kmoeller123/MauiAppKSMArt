@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MauiAppKSMArt.Models;
+using MauiAppKSMArt.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using MauiAppKSMArt.Services;
-using MauiAppKSMArt.Models;
-using CommunityToolkit.Maui;
 
 namespace MauiAppKSMArt.ViewsModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
+        int PropertyChangedCount = 0; 
         ArtObjectRestService src = new ArtObjectRestService();
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -23,6 +17,7 @@ namespace MauiAppKSMArt.ViewsModels
         internal int _selectedItem = 0;
 
         internal ImageSource _source = ("dotnet_bot.png");
+        internal ImageSource _source1 = ("dotnet_bot.png");
 
         internal List<ArtObject> _artObjects = new List<ArtObject>();
         internal ArtObject _selectedArtObject = new ArtObject();
@@ -40,8 +35,7 @@ namespace MauiAppKSMArt.ViewsModels
             MainPageGetButtonClick = new Command(MpLoadClick);
             MainPagePrevButtonClick = new Command(MpPrevClick);
             MainPageNextButtonClick = new Command(MpNextClick);
-
-        }
+        }       
 
         internal void MpPrevClick()
         {
@@ -58,23 +52,34 @@ namespace MauiAppKSMArt.ViewsModels
             MyImageSource = SelectedArtObject.Location;         
         }
 
-        internal void MpNextClick()
+        internal async void MpNextClick(object obj)
         {
+            var img = (Image)obj;
+            if (img == null) return;
+
             if (_artObjects == null || _artObjects.Count == 0) return;
 
             if (_selectedItem == _objectCount -1) _selectedItem = 0;
             else
             {
                 _selectedItem = _selectedItem + 1;
-            }
+            }            
 
-            //MyImageSource = "";
-            SelectedArtObject = _artObjects[_selectedItem];
-            MyImageSource = SelectedArtObject.Location;
+            //MyImageSource = "";           
+            MyImageSource = _artObjects[_selectedItem].Location;
+
+            int n = (_selectedItem < _artObjects.Count - 2) ? _selectedItem : 0;
+            MyImageSource1 = _artObjects[n].Location;
+
+            await ImageClose(img);
+
+            await Task.Delay(2000);
+
+            await ImageOpen(img);
+
         }
-
-    
-        internal async void MpLoadClick()
+      
+        internal async void MpLoadClick(object obj)
         {
            var result = await src.GetDataAsync();
             if (result != null && result.Count >0)
@@ -84,11 +89,30 @@ namespace MauiAppKSMArt.ViewsModels
                 MyArtObjects = result;
 
                 MyImageSource = result[0].Location;
+                MyImageSource1 = result[1].Location;
 
                 _selectedItem = 0;
 
                 isEnabled = true;
             }
+        }
+
+        internal async Task<string> ImageClose(Image img)
+        {
+            //await img.RotateYTo(360, 1500);
+            await img.FadeTo(0, 2000, null);
+            //await img.ScaleYTo(0, 2000, null);
+
+            return "ok";
+        }
+
+        internal async Task<string> ImageOpen(Image img)
+        {
+            //await img.RotateYTo(360, 1500);
+            await img.FadeTo(1, 2000, null);
+            //await img.ScaleYTo(1, 1000, null);
+
+            return "ok";
         }
 
         public ArtObject SelectedArtObject
@@ -112,6 +136,20 @@ namespace MauiAppKSMArt.ViewsModels
                 if (_source != value) 
                 {
                     _source = value;
+                    OnPropertyChanged();
+                }
+            }
+
+        }
+
+        public ImageSource MyImageSource1
+        {
+            get => _source1;
+            set
+            {
+                if (_source1 != value)
+                {
+                    _source1 = value;
                     OnPropertyChanged();
                 }
             }
