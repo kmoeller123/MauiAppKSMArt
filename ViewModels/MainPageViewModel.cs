@@ -16,8 +16,7 @@ namespace MauiAppKSMArt.ViewsModels
         internal int _objectCount = 0;
         internal int _selectedItem = 0;
 
-        internal ImageSource _source = ("dotnet_bot.png");
-        internal ImageSource _source1 = ("dotnet_bot.png");
+        internal ImageSource _source = ("dotnet_bot.png");      
 
         internal List<ArtObject> _artObjects = new List<ArtObject>();
         internal ArtObject _selectedArtObject = new ArtObject();
@@ -46,37 +45,24 @@ namespace MauiAppKSMArt.ViewsModels
             {
                 _selectedItem = _selectedItem - 1;
             }
-
-            //MyImageSource = "";
+         
             SelectedArtObject = _artObjects[_selectedItem];
             MyImageSource = SelectedArtObject.Location;         
         }
 
-        internal async void MpNextClick(object obj)
+        internal void MpNextClick()
         {
-            var img = (Image)obj;
-            if (img == null) return;
-
             if (_artObjects == null || _artObjects.Count == 0) return;
 
             if (_selectedItem == _objectCount -1) _selectedItem = 0;
             else
             {
                 _selectedItem = _selectedItem + 1;
-            }            
+            }
 
-            //MyImageSource = "";           
-            MyImageSource = _artObjects[_selectedItem].Location;
-
-            int n = (_selectedItem < _artObjects.Count - 2) ? _selectedItem : 0;
-            MyImageSource1 = _artObjects[n].Location;
-
-            await ImageClose(img);
-
-            await Task.Delay(2000);
-
-            await ImageOpen(img);
-
+            SelectedArtObject = _artObjects[_selectedItem];
+            MyImageSource = SelectedArtObject.Location;           
+           
         }
       
         internal async void MpLoadClick(object obj)
@@ -89,8 +75,7 @@ namespace MauiAppKSMArt.ViewsModels
                 MyArtObjects = result;
 
                 MyImageSource = result[0].Location;
-                MyImageSource1 = result[1].Location;
-
+             
                 _selectedItem = 0;
 
                 isEnabled = true;
@@ -140,21 +125,7 @@ namespace MauiAppKSMArt.ViewsModels
                 }
             }
 
-        }
-
-        public ImageSource MyImageSource1
-        {
-            get => _source1;
-            set
-            {
-                if (_source1 != value)
-                {
-                    _source1 = value;
-                    OnPropertyChanged();
-                }
-            }
-
-        }
+        }        
 
         public List<ArtObject> MyArtObjects
         {

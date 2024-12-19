@@ -64,15 +64,7 @@
                     <Image.Shadow>
                         <Shadow Brush="Gray" Offset="20,20" Radius="60"/>
                     </Image.Shadow>
-                </Image>
-
-                <Image x:Name="myImage2" Source="dotnet_bot.png" MaximumHeightRequest="800" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"
-                       Margin="0" Opacity="0"  >
-                    <Image.Shadow>
-                        <Shadow Brush="Gray" Offset="20,20" Radius="60"/>
-                    </Image.Shadow>
-                </Image>
-
+                </Image>              
 
             </Grid>
 
