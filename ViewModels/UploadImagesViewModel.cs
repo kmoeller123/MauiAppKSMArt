@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace MauiAppKSMArt.ViewsModels
 {
-    public class UploadBlobToAzureViewModel : INotifyPropertyChanged
+    public class UploadImagesViewModel : INotifyPropertyChanged
     {        
         bool _loadisEnabled = false;
 
@@ -26,7 +26,7 @@ namespace MauiAppKSMArt.ViewsModels
         public ICommand ValidateAllFields { get; private set; }
         public ICommand ResetForm { get; private set; }
 
-        public UploadBlobToAzureViewModel()
+        public UploadImagesViewModel()
         {
             PickImagesBlobButtonClick = new Command(MpPickClick);
             ValidateAllFields = new Command(ValidateFileds);

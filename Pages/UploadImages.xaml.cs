@@ -1,9 +1,9 @@
 using MauiAppKSMArt.Services;
 namespace MauiAppKSMArt.Pages;
 
-public partial class UploadBlobToAzure : ContentPage
+public partial class UploadImages : ContentPage
 {
-    public UploadBlobToAzure()    
+    public UploadImages()    
     {
         InitializeComponent();
     }

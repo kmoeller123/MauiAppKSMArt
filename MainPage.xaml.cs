@@ -7,6 +7,7 @@
     using MauiAppKSMArt.Models;
     using System.ComponentModel;
 
+
     public partial class MainPage : ContentPage
     {
         IDispatcherTimer _myTimerOpen;

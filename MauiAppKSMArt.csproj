@@ -75,10 +75,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\FeaturedArtist.xaml.cs">
+	    <DependentUpon>FeaturedArtist.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\UploadImages.xaml.cs">
+	    <DependentUpon>UploadImages.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\UploadBlobToAzure.xaml">
+	  <MauiXaml Update="Pages\ArtistBioPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CustomerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\FeaturedArtist.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SearchPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\UploadImages.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

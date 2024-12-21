@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAppKSMArt.Pages.UploadBlobToAzure"
+             x:Class="MauiAppKSMArt.Pages.UploadImages"
              xmlns:local="clr-namespace:MauiAppKSMArt"
              xmlns:vm="clr-namespace:MauiAppKSMArt.ViewsModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             Title="Upload To Azure" BackgroundColor="WhiteSmoke">
+             Title="Upload Images" BackgroundColor="WhiteSmoke">
 
     <ContentPage.BindingContext>
-        <vm:UploadBlobToAzureViewModel />
+        <vm:UploadImagesViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
