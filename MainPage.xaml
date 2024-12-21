@@ -13,7 +13,7 @@
         <VerticalStackLayout Background="WhiteSmoke" Padding="0" Spacing="2">
            
             <Label
-                Text="Art Marketplace" FontSize="Large" TextColor="Black"
+                Text="Art Marketplace" FontSize="Large" TextColor="OliveDrab"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level3" >
                 <Label.Shadow>
@@ -59,9 +59,11 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                
+
+                <Image Source="marketplace.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" MaximumHeightRequest="200" Opacity=".8" />
+
                 <Image x:Name="myImage" Source="{Binding MyImageSource}" MaximumHeightRequest="800" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"
-                       Margin="0" Opacity="1" >
+                       Margin="0" Opacity="1"  PropertyChanging="myImage_PropertyChanging"  >
                     <Image.Shadow>
                         <Shadow Brush="Gray" Offset="20,20" Radius="60"/>
                     </Image.Shadow>

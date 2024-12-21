@@ -16,7 +16,7 @@ namespace MauiAppKSMArt.ViewsModels
         internal int _objectCount = 0;
         internal int _selectedItem = 0;
 
-        internal ImageSource _source = ("dotnet_bot.png");      
+        internal ImageSource _source;      
 
         internal List<ArtObject> _artObjects = new List<ArtObject>();
         internal ArtObject _selectedArtObject = new ArtObject();
