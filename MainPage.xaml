@@ -13,7 +13,7 @@
         <VerticalStackLayout Background="WhiteSmoke" Padding="0" Spacing="2">
            
             <Label
-                Text="Art Marketplace" FontSize="Large" TextColor="OliveDrab"
+                Text="Art Marketplace" FontSize="Large" TextColor="DarkBlue"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level3" >
                 <Label.Shadow>
@@ -73,9 +73,9 @@
 
             <FlexLayout HorizontalOptions="Center" BackgroundColor="Transparent" Margin="0" Opacity=".7" >
                 <HorizontalStackLayout HorizontalOptions="Center">
-                    <Label Text="{Binding SelectedArtObject.UserName}" TextColor="Black" FontSize="Small"  Margin="5,0,0,0" />
-                    <Label Text="{Binding SelectedArtObject.Title}"    TextColor="Black" FontSize="Small" Margin="4,0,0,0" />
-                    <Label Text="{Binding SelectedArtObject.Price, StringFormat= '${0:F2}'}"    TextColor="Black" FontSize="Small" Margin="4,0,5,0" />
+                    <Label Text="{Binding SelectedArtObject.UserName}" TextColor="DarkBlue" FontSize="Small"  Margin="5,0,0,0" />
+                    <Label Text="{Binding SelectedArtObject.Title}"    TextColor="DarkBlue" FontSize="Small" Margin="4,0,0,0" />
+                    <Label Text="{Binding SelectedArtObject.Price, StringFormat= '${0:F2}'}"    TextColor="DarkBlue" FontSize="Small" Margin="4,0,5,0" />
                 </HorizontalStackLayout>   
             </FlexLayout>
 
